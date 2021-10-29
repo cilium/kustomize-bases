@@ -1,8 +1,8 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  #- github.com/open-telemetry/opentelemetry-operator/config/default?ref=v0.37.1
-  # this fork include a fix for cert-manager API versions
+  # this should normally track ref=v0.37.0, but a specific commit is being used to include https://github.com/open-telemetry/opentelemetry-operator/pull/479;
+  # it will need to be updated once v0.38.0 is out
   - github.com/errordeveloper/opentelemetry-operator/config/default?ref=8dc2adbe24fb37859c3917e5991a13b551db3e3c
 images:
 - name: controller
