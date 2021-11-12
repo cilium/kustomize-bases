@@ -16,7 +16,7 @@ patchesStrategicMerge:
         containers:
         - name: podinfod
           # https://github.com/stefanprodan/podinfo/pull/164
-          image: docker.io/errordeveloper/podinfo:8d6136d69a96c7c63dd033c57d5c96276d43a9a7
+          image: docker.io/errordeveloper/podinfo:b2e311b703b7587b007ac813c3eec135f914fc85
           env:
           - name: OTEL_EXPORTER_OTLP_ENDPOINT
             value: http://localhost:4318
