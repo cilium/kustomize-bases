@@ -20,3 +20,13 @@ patchesStrategicMerge:
           env:
           - name: OTEL_EXPORTER_OTLP_ENDPOINT
             value: http://localhost:4318
+          command:
+          - ./podinfo
+          - --port=9898
+          - --port-metrics=9797
+          - --grpc-port=9999
+          - --grpc-service-name=podinfo
+          - --level=info
+          - --random-delay=false
+          - --random-error=false
+          - --backend-url=http://podinfo:9898/echo
