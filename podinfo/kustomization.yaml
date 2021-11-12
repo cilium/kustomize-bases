@@ -1,0 +1,22 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: podinfo
+resources:
+  - namespace.yaml
+  - github.com/stefanprodan/podinfo/kustomize?ref=6.0.3
+patchesStrategicMerge:
+- |-
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: podinfo
+  spec:
+    template:
+      spec:
+        containers:
+        - name: podinfod
+          # https://github.com/stefanprodan/podinfo/pull/164
+          image: docker.io/errordeveloper/podinfo:8d6136d69a96c7c63dd033c57d5c96276d43a9a7
+          env:
+          - name: OTEL_EXPORTER_OTLP_ENDPOINT
+            value: http://localhost:4318
