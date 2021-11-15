@@ -16,13 +16,8 @@ patchesStrategicMerge:
       spec:
         containers:
         - name: podinfod
-          command:
-          - ./podinfo
-          - --port=9898
-          - --port-metrics=9797
-          - --grpc-port=9999
-          - --grpc-service-name=podinfo
-          - --level=info
-          - --random-delay=false
-          - --random-error=false
-          - --backend-url=http://podinfo-backend:9898/echo
+          env:
+          - name: PODINFO_BACKEND_URL
+            value: http://podinfo-backend:9898/echo
+          - name: PODINFO_OTEL_SERVICE_NAME
+            value: podinfo-frontend
