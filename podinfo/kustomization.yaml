@@ -3,30 +3,6 @@ kind: Kustomization
 namespace: podinfo
 resources:
   - namespace.yaml
-  - github.com/stefanprodan/podinfo/kustomize?ref=6.0.3
-patchesStrategicMerge:
-- |-
-  apiVersion: apps/v1
-  kind: Deployment
-  metadata:
-    name: podinfo
-  spec:
-    template:
-      spec:
-        containers:
-        - name: podinfod
-          # https://github.com/stefanprodan/podinfo/pull/164
-          image: docker.io/errordeveloper/podinfo:f760beb270e6b43a0f8d44c9dd9d1882e09731e5
-          env:
-          - name: OTEL_EXPORTER_OTLP_ENDPOINT
-            value: http://localhost:4318
-          command:
-          - ./podinfo
-          - --port=9898
-          - --port-metrics=9797
-          - --grpc-port=9999
-          - --grpc-service-name=podinfo
-          - --level=info
-          - --random-delay=false
-          - --random-error=false
-          #- --backend-url=http://podinfo:9898/echo
+bases:
+  - frontend
+  - backend
