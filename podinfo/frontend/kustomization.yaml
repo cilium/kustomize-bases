@@ -5,6 +5,7 @@ bases:
 nameSuffix: -frontend
 commonLabels:
   role: frontend
+  app: podinfo-frontend
 patchesStrategicMerge:
 - |-
   apiVersion: apps/v1
