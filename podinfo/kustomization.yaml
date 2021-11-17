@@ -4,5 +4,6 @@ namespace: podinfo
 resources:
   - namespace.yaml
 bases:
+  - client
   - frontend
   - backend
